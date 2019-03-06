@@ -16,32 +16,38 @@
  *
  */
 
-package org.dromara.soul.common.dto.convert;
+package org.dromara.soul.common.dto.convert.selector;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
 import java.io.Serializable;
 
 /**
- * this is spring cloud plugin handle.
+ * The type Dubbo selector handle.
  *
- * @author xiaoyu
+ * @author xiaoyu(Myth)
  */
-@Getter
-@Setter
-@ToString
-public class SpringCloudHandle extends HystrixHandle implements Serializable {
+@Data
+public class DubboSelectorHandle implements Serializable {
 
     /**
-     * this is register eureka serviceId.
+     * zookeeper url is required.
      */
-    private String serviceId;
+    private String registry;
 
     /**
-     * this remote uri path.
+     * dubbo application name is required.
      */
-    private String path;
+    private String appName;
+
+    /**
+     * dubbo protocol.
+     */
+    private String protocol;
+
+    /**
+     * port.
+     */
+    private int port;
 
 }

@@ -266,6 +266,9 @@ public class ZookeeperCacheManager implements CommandLineRunner, DisposableBean 
     private void setSelectorMapByKey(final String key, final SelectorZkDTO selectorZkDTO) {
         Optional.ofNullable(key)
                 .ifPresent(k -> {
+                    if (selectorZkDTO.getPluginName().equals(PluginEnum.DIVIDE.getName())) {
+                        UpstreamCacheManager.submit(selectorZkDTO);
+                    }
                     if (SELECTOR_MAP.containsKey(k)) {
                         final List<SelectorZkDTO> selectorZkDTOList = SELECTOR_MAP.get(key);
                         final List<SelectorZkDTO> resultList = selectorZkDTOList.stream()
@@ -290,6 +293,9 @@ public class ZookeeperCacheManager implements CommandLineRunner, DisposableBean 
                 Optional.ofNullable(data)
                         .ifPresent(d -> {
                             SelectorZkDTO dto = (SelectorZkDTO) d;
+                            if (dto.getPluginName().equals(PluginEnum.DIVIDE.getName())) {
+                                UpstreamCacheManager.submit(dto);
+                            }
                             final String key = dto.getPluginName();
                             final List<SelectorZkDTO> selectorZkDTOList = SELECTOR_MAP.get(key);
                             if (CollectionUtils.isNotEmpty(selectorZkDTOList)) {
@@ -323,9 +329,6 @@ public class ZookeeperCacheManager implements CommandLineRunner, DisposableBean 
     private void setRuleMapByKey(final String key, final RuleZkDTO ruleZkDTO) {
         Optional.ofNullable(key)
                 .ifPresent(k -> {
-                    if (ruleZkDTO.getName().equals(PluginEnum.DIVIDE.getName())) {
-                        UpstreamCacheManager.submit(ruleZkDTO);
-                    }
                     if (RULE_MAP.containsKey(k)) {
                         final List<RuleZkDTO> ruleZkDTOList = RULE_MAP.get(key);
                         final List<RuleZkDTO> resultList = ruleZkDTOList.stream()
@@ -351,9 +354,6 @@ public class ZookeeperCacheManager implements CommandLineRunner, DisposableBean 
                 Optional.ofNullable(data)
                         .ifPresent(d -> {
                             RuleZkDTO dto = (RuleZkDTO) d;
-                            if (dto.getName().equals(PluginEnum.DIVIDE.getName())) {
-                                UpstreamCacheManager.submit(dto);
-                            }
                             final String key = dto.getSelectorId();
                             final List<RuleZkDTO> ruleZkDTOList = RULE_MAP.get(key);
                             if (CollectionUtils.isNotEmpty(ruleZkDTOList)) {

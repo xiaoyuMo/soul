@@ -16,40 +16,30 @@
  *
  */
 
-package org.dromara.soul.common.dto.convert;
+package org.dromara.soul.common.dto.convert.rule;
 
 import lombok.Data;
-import lombok.ToString;
+import org.dromara.soul.common.dto.convert.HystrixHandle;
 
 import java.io.Serializable;
 
 /**
- * this is divide upstream.
+ * The type Divide rule handle.
  *
- * @author xiaoyu(Myth).
+ * @author xiaoyu(Myth)
  */
 @Data
-@ToString
-public class DivideUpstream implements Serializable {
+public class DivideRuleHandle extends HystrixHandle implements Serializable {
 
     /**
-     * host.
+     * loadBalance.
+     * {@linkplain org.dromara.soul.common.enums.LoadBalanceEnum}
      */
-    private String upstreamHost;
+    private String loadBalance;
 
     /**
-     * this is http protocol.
+     * http retry.
      */
-    private String protocol;
-
-    /**
-     * url.
-     */
-    private String upstreamUrl;
-
-    /**
-     * weight.
-     */
-    private int weight;
+    private int retry;
 
 }

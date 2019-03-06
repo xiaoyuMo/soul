@@ -16,32 +16,42 @@
  *
  */
 
-package org.dromara.soul.common.dto.convert;
+package org.dromara.soul.common.dto.convert.rule;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.dromara.soul.common.dto.convert.HystrixHandle;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
- * this is divide plugin handle.
+ * The type Dubbo rule handle.
+ *
  * @author xiaoyu(Myth)
  */
 @Getter
 @Setter
 @ToString
-public class DivideHandle extends HystrixHandle implements Serializable {
+public class DubboRuleHandle extends HystrixHandle implements Serializable {
 
     /**
-     * loadBalance.
+     * version.
+     */
+    private String version;
+
+    /**
+     * group.
+     */
+    private String group;
+
+    /**
+     * retries.
+     */
+    private Integer retries;
+
+    /**
      * {@linkplain org.dromara.soul.common.enums.LoadBalanceEnum}
      */
     private String loadBalance;
-
-    /**
-     * upstream list.
-     */
-    private List<DivideUpstream> upstreamList;
 }

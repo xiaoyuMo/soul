@@ -16,40 +16,27 @@
  *
  */
 
-package org.dromara.soul.common.dto.convert;
+package org.dromara.soul.common.dto.convert.rule;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
+import org.dromara.soul.common.dto.convert.HystrixHandle;
 
 import java.io.Serializable;
 
 /**
- * this is divide upstream.
+ * The type Spring cloud rule handle.
  *
- * @author xiaoyu(Myth).
+ * @author xiaoyu(Myth)
  */
-@Data
 @ToString
-public class DivideUpstream implements Serializable {
+@Getter
+@Setter
+public class SpringCloudRuleHandle extends HystrixHandle implements Serializable {
 
     /**
-     * host.
+     * this remote uri path.
      */
-    private String upstreamHost;
-
-    /**
-     * this is http protocol.
-     */
-    private String protocol;
-
-    /**
-     * url.
-     */
-    private String upstreamUrl;
-
-    /**
-     * weight.
-     */
-    private int weight;
-
+    private String path;
 }

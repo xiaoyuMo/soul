@@ -16,40 +16,23 @@
  *
  */
 
-package org.dromara.soul.common.dto.convert;
+package org.dromara.soul.configuration.zookeeper;
 
 import lombok.Data;
-import lombok.ToString;
-
-import java.io.Serializable;
 
 /**
- * this is divide upstream.
+ * The type Zookeeper config.
  *
- * @author xiaoyu(Myth).
+ * @author xiaoyu(Myth)
  */
 @Data
-@ToString
-public class DivideUpstream implements Serializable {
+public class ZookeeperConfig {
 
-    /**
-     * host.
-     */
-    private String upstreamHost;
+    private String url;
 
-    /**
-     * this is http protocol.
-     */
-    private String protocol;
+    private Integer sessionTimeout;
 
-    /**
-     * url.
-     */
-    private String upstreamUrl;
+    private Integer connectionTimeout;
 
-    /**
-     * weight.
-     */
-    private int weight;
-
+    private String serializer;
 }

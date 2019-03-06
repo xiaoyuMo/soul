@@ -16,40 +16,35 @@
  *
  */
 
-package org.dromara.soul.common.dto.convert;
+package org.dromara.soul.admin.listener;
 
 import lombok.Data;
-import lombok.ToString;
-
-import java.io.Serializable;
 
 /**
- * this is divide upstream.
+ * The type Domain.
  *
- * @author xiaoyu(Myth).
+ * @author xiaoyu
  */
 @Data
-@ToString
-public class DivideUpstream implements Serializable {
+public final class Domain {
+
+    private static final Domain HTTP_PATH = new Domain();
 
     /**
-     * host.
+     * ip:port.
      */
-    private String upstreamHost;
+    private String httpPath;
+
+    private Domain() {
+    }
 
     /**
-     * this is http protocol.
+     * Gets instance.
+     *
+     * @return the instance
      */
-    private String protocol;
-
-    /**
-     * url.
-     */
-    private String upstreamUrl;
-
-    /**
-     * weight.
-     */
-    private int weight;
+    public static Domain getInstance() {
+        return HTTP_PATH;
+    }
 
 }
